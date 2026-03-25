@@ -15,18 +15,20 @@ function authHeaders() {
 }
 
 async function req(url: string, method = 'GET', body?: object) {
-  const res = await fetch(url, {
-    method,
-    headers: authHeaders(),
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const text = await res.text();
   try {
-    const data = JSON.parse(text);
-    if (typeof data === 'string') return JSON.parse(data);
+    const res = await fetch(url, {
+      method,
+      headers: authHeaders(),
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const text = await res.text();
+    if (!text) return {};
+    let data = JSON.parse(text);
+    // платформа иногда double-encode body как строку
+    if (typeof data === 'string') data = JSON.parse(data);
     return data;
   } catch {
-    return {};
+    return { error: 'Нет соединения с сервером' };
   }
 }
 

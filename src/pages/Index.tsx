@@ -323,37 +323,47 @@ export default function Index() {
   };
 
   // Auth handlers
+  const applyAuth = (data: Record<string, unknown>) => {
+    const user = data.user as User;
+    localStorage.setItem('kiscord_token', data.token as string);
+    setUser(user);
+    setLoggedIn(true);
+    setProfileName(user.name);
+    setProfileStatus(user.status || "");
+    setProfilePresence(user.presence || "online");
+  };
+
   const handleLogin = async () => {
     setAuthError("");
     setAuthLoading(true);
-    const data = await api.login(loginEmail, loginPassword);
-    setAuthLoading(false);
-    if (data.token) {
-      localStorage.setItem('kiscord_token', data.token);
-      setUser(data.user);
-      setLoggedIn(true);
-      setProfileName(data.user.name);
-      setProfileStatus(data.user.status || "");
-      setProfilePresence(data.user.presence || "online");
-    } else {
-      setAuthError(data.error || "Ошибка входа");
+    try {
+      const data = await api.login(loginEmail, loginPassword);
+      if (data.token) {
+        applyAuth(data);
+      } else {
+        setAuthError(data.error || "Неверный email или пароль");
+      }
+    } finally {
+      setAuthLoading(false);
     }
   };
 
   const handleRegister = async () => {
+    if (!regName.trim() || !regEmail.trim() || !regPassword.trim()) {
+      setAuthError("Заполните все поля");
+      return;
+    }
     setAuthError("");
     setAuthLoading(true);
-    const data = await api.register(regName, regEmail, regPassword);
-    setAuthLoading(false);
-    if (data.token) {
-      localStorage.setItem('kiscord_token', data.token);
-      setUser(data.user);
-      setLoggedIn(true);
-      setProfileName(data.user.name);
-      setProfileStatus(data.user.status || "");
-      setProfilePresence(data.user.presence || "online");
-    } else {
-      setAuthError(data.error || "Ошибка регистрации");
+    try {
+      const data = await api.register(regName.trim(), regEmail.trim(), regPassword);
+      if (data.token) {
+        applyAuth(data);
+      } else {
+        setAuthError(data.error || "Ошибка регистрации");
+      }
+    } finally {
+      setAuthLoading(false);
     }
   };
 
