@@ -32,17 +32,17 @@ async function req(url: string, method = 'GET', body?: object) {
 
 export const api = {
   register: (name: string, email: string, password: string) =>
-    req(`${URLS.auth}/register`, 'POST', { name, email, password }),
+    req(`${URLS.auth}/`, 'POST', { action: 'register', name, email, password }),
 
   login: (email: string, password: string) =>
-    req(`${URLS.auth}/login`, 'POST', { email, password }),
+    req(`${URLS.auth}/`, 'POST', { action: 'login', email, password }),
 
-  me: () => req(`${URLS.auth}/me`, 'GET'),
+  me: () => req(`${URLS.auth}/`, 'GET'),
 
-  logout: () => req(`${URLS.auth}/logout`, 'POST'),
+  logout: () => req(`${URLS.auth}/`, 'POST', { action: 'logout' }),
 
   updateProfile: (data: { name?: string; status?: string; presence?: string }) =>
-    req(`${URLS.auth}/profile`, 'PUT', data),
+    req(`${URLS.auth}/`, 'PUT', data),
 
   getChats: () => req(`${URLS.chats}/`, 'GET'),
 
