@@ -72,7 +72,7 @@ export default function Index() {
             >
               <Icon name="MessageCircle" size={20} className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white">Дискордик</h1>
+            <h1 className="text-2xl font-bold text-white">Kiscord</h1>
           </div>
 
           {authMode === "login" ? (
@@ -122,7 +122,7 @@ export default function Index() {
           ) : (
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-white text-center mb-2">Создать аккаунт</h2>
-              <p className="text-[#b9bbbe] text-sm text-center mb-6">Присоединяйся к Дискордику</p>
+              <p className="text-[#b9bbbe] text-sm text-center mb-6">Присоединяйся к Kiscordу</p>
               <div>
                 <label className="text-[#b9bbbe] text-xs font-semibold uppercase tracking-wide block mb-1.5">Имя пользователя</label>
                 <input
@@ -196,7 +196,7 @@ export default function Index() {
           >
             <Icon name="MessageCircle" size={16} className="text-white" />
           </div>
-          <span className="font-bold text-white text-lg">Дискордик</span>
+          <span className="font-bold text-white text-lg">Kiscord</span>
         </div>
         <div className="flex items-center gap-2">
           <div
