@@ -1,0 +1,7 @@
+{
+  "friends": "https://functions.poehali.dev/8126b14b-4ef0-44c3-9230-c5dd1c2b79b8",
+  "auth": "https://functions.poehali.dev/480a5a6b-7ffa-4f09-b8ac-754517b4fe18",
+  "chats": "https://functions.poehali.dev/d2827676-76f8-4b2d-b142-ebcf79a3e72d",
+  "signaling": "https://functions.poehali.dev/a73507f9-085a-4b82-821b-7651241c8536",
+  "messages": "https://functions.poehali.dev/9cbbce86-2ed1-4677-83df-91e67cd53f68"
+}

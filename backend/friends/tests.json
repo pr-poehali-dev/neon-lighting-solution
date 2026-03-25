@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Get friends without token",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 401,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

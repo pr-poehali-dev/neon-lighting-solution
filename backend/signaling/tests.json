@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Get signals without token",
+      "method": "GET",
+      "path": "/?peer=1",
+      "expectedStatus": 401,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

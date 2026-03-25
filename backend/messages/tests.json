@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Get messages without token",
+      "method": "GET",
+      "path": "/?with=1",
+      "expectedStatus": 401,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
